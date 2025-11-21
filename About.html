@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tentang LAZCREVAL - Acara kolaborasi sekolah untuk menampilkan bakat dan mempererat tali persaudaraan.">
+    <meta name="keywords" content="LAZCREVAL, OSIS Lazuardi GCS, acara sekolah, kolaborasi sekolah, bakat siswa, SMP">
+    <meta name="author" content="Aalvaro Emranadirga">
+    <title>About - LAZCREVAL</title>
+    <link rel="icon" type="image/png" href="logo osis.jpg">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --bg: #0f172a;
+            --text: #f1f5f9;
+            --white: #ffffff;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        /* Modern Button */
+        .btn-modern {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-modern:hover::before {
+            left: 100%;
+        }
+
+        /* Tambahan untuk tombol toggle (sekarang sebagai link ke white.html) */
+        .theme-toggle {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            background: transparent;
+            border: 2px solid var(--accent);
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 58, 138, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(30, 58, 138, 0.95);
+            padding: 15px 40px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-left img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            transition: transform var(--transition);
+        }
+
+        .header-left img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Hero */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+            animation: fadeInUp 1.5s ease-out;
+            z-index: 3;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.4));
+            z-index: 2;
+        }
+
+        #hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main */
+        main {
+            padding: 200px 40px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            position: relative;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+            background: rgba(30, 58, 138, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .about-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img img {
+            width: 100%;
+            transition: transform var(--transition);
+        }
+
+        .about-img img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--text);
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: var(--accent);
+            transition: color var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            main {
+                padding: 150px 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="logo osis.jpg" alt="Logo OSIS Lazuardi GCS">
+        <h1>LAZCREVAL</h1>
+    </div>
+    <nav class="nav-buttons">
+        <a class="btn-modern" href="index.html">Home</a>
+        <a class="btn-modern" href="About.html">About</a>
+        <a class="btn-modern" href="support.html" target="_blank">Support</a>
+        <a class="btn-modern" href="register.html">Register</a>
+        <a class="theme-toggle" href="white.html">White</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <canvas id="hero-bg"></canvas>
+    <div class="overlay"></div>
+    <h2>About</h2>
+</section>
+
+<main>
+    <article class="about-section">
+        <div class="about-img"><img src="foto 1.jpeg" alt="Apa itu LAZCREVAL"></div>
+        <div class="about-text">
+            <h2>Apa itu LAZCREVAL?</h2>
+            <p>LAZCREVAL adalah acara kolaborasi antar sekolah yang diselenggarakan oleh OSIS Lazuardi GCS. Acara ini bertujuan untuk menampilkan bakat siswa, mempererat tali persaudaraan, dan menciptakan pengalaman yang tak terlupakan.</p>
+        </div>
+    </article>
+
+    <article class="about-section">
+        <div class="about-img"><img src="foto 2.jpeg" alt="Tujuan Acara"></div>
+        <div class="about-text">
+            <h2>Tujuan Acara</h2>
+            <p>Tujuan utama LAZCREVAL adalah membangun solidaritas antar sekolah, mengembangkan kreativitas siswa, dan memberikan platform bagi talenta muda untuk bersinar. Kami percaya bahwa melalui kolaborasi, kita bisa mencapai lebih banyak.</p>
+        </div>
+    </article>
+
+    <article class="about-section">
+        <div class="about-img"><img src="foto 3.jpeg" alt="OSIS Lazuardi GCS"></div>
+        <div class="about-text">
+            <h2>OSIS Lazuardi GCS</h2>
+            <p>OSIS Lazuardi GCS adalah organisasi siswa yang aktif dan inovatif. Kami berkomitmen untuk memberikan kontribusi positif bagi sekolah dan masyarakat melalui berbagai kegiatan kreatif dan edukatif.</p>
+        </div>
+    </article>
+
+    <article class="about-section">
+        <div class="about-img"><img src="foto 4.jpeg" alt="Kolaborasi dan Persaudaraan"></div>
+        <div class="about-text">
+            <h2>Kolaborasi dan Persaudaraan</h2>
+            <p>LAZCREVAL bukan hanya tentang kompetisi, tapi juga tentang membangun persahabatan. Dengan melibatkan berbagai sekolah, kami ingin menciptakan jaringan yang kuat dan mendukung pertumbuhan bersama.</p>
+        </div>
+    </article>
+
+    <article class="about-section">
+        <div class="about-img"><img src="foto 5.jpeg" alt="Bergabunglah dengan Kami"></div>
+        <div class="about-text">
+            <h2>Bergabunglah dengan Kami</h2>
+            <p>Jika Anda tertarik untuk berpartisipasi atau mendukung LAZCREVAL, jangan ragu untuk menghubungi kami. Bersama-sama, kita bisa membuat acara ini menjadi lebih hebat!</p>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <p>Terima kasih atas kunjungan Anda!</p>
+    <p>Website Ini Dibuat Oleh Dev Aalvaro Emranadirga. Info lebih lanjut: 
+        <a href="About.html">About</a> • 
+        <a href="support.html">Support</a>
+    </p>
+</footer>
+
+<script>
+    // Scroll header
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const items = document.querySelectorAll('.about-section');
+    function reveal() {
+        const trigger = window.innerHeight * 0.85;
+        items.forEach(i => {
+            if (i.getBoundingClientRect().top < trigger) {
+                i.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Hero background animation
+    const canvas = document.getElementById('hero-bg');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 4 + 1,
+            dx: (Math.random() - 0.5) * 0.8,
+            dy: (Math.random() - 0.5) * 0.8
+        });
+    }
+
+    function animate() {
+        const gradient = ctx.createLinearGradient(0, 0, w, h);
+        gradient.addColorStop(0, '#0f172a');
+        gradient.addColorStop(0.5, '#1e3a8a');
+        gradient.addColorStop(1, '#3b82f6');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, w, h);
+
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(96, 165, 250, 0.6)';
+            ctx.fill();
+
+            p.x += p.dx;
+            p.y += p.dy;
+            if (p.x < 0 || p.x > w) p.dx *= -1;
+            if (p.y < 0 || p.y > h) p.dy *= -1;
+        });
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    });
+</script>
+
+</body>
+</html>
